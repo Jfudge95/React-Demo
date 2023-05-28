@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"; //state = a value that when it changes the DOM reflects that change. Stateful variables must have the useState hook here.
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const increment = () => {
+    setCounter((currentVal) => currentVal + 1); //Because multiple things could be changing our Counter. We use currentVal to always show the current value of the counter
+  };
+
+  const decrement = () => {
+    if (counter === 0) return;
+    setCounter((currentVal) => currentVal - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Count: {counter}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
     </div>
   );
 }
 
 export default App;
+
+// line 4 There are 2 return values. The first value "counter" is our stateful variable. Our second "setCounter" is our variable. Inside the function we give it the initial value of zero useState(0)
+// NEVER modify a stateful variable directly. the variable "setCounter" will be how we modify our stateful value "counter"
