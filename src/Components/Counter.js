@@ -21,3 +21,5 @@ function Counter() {
 }
 
 export default Counter;
+
+// The first value "counter" is our stateful variable. Our second "setCounter" is our variable. Inside the function we give it the initial value of zero useState(0)
